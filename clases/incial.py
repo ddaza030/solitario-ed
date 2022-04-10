@@ -15,7 +15,10 @@ class Inicial:
             for i in range(cantidad):
                 conjunto_en_mano.append(self.visibles.pop())
         if cantidad == tamano:
-            self.invisibles.append(self.visibles.pop())
+            try:
+                self.invisibles.append(self.visibles.pop())
+            except IndexError:
+                pass
 
         return conjunto_en_mano
 
