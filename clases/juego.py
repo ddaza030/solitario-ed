@@ -1,4 +1,7 @@
 from collections import deque
+from clases.final import Final
+from clases.incial import Inicial
+
 import random
 
 class Juego:
@@ -15,12 +18,12 @@ class Juego:
             listaInicial=list() #creacion de la columan inicial
             for j in range(i): 
                 listaInicial.append(self.baraja.pop()) #agregar cartas desde la baraja inicial a la columna
-            self.iniciales.append(inicial(listaInicial)) #agregar desde la inicial
+            self.iniciales.append(Inicial(listaInicial)) #agregar desde la inicial
         
         self.finales=list()
 
         for i in range(4): #Creacion de la columna de finales
-            f=final()
+            f=Final()
             self.finales.append(f)
         
 

@@ -1,6 +1,9 @@
-class Final:
-    def __init__(self,cartas = tuple(),pinta = None):
+from collections import deque
 
+class Final:
+    def __init__(self,cartas = deque(),pinta = None):
+        self.cartas=cartas
+        self.pinta=pinta
         pass
 
     #Funcion pa poner las cartas en la torre final
