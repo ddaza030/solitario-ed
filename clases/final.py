@@ -12,7 +12,7 @@ class Final:
         elif self.cartas[-1][0] < carta[0] and carta[1] == self.pinta:    #Si la ultima carta de la torre es menor a la que se va a poner y es de la misma pinta que se appendee
             self.cartas.append(carta)
         else:
-            print("Movimiento invalido, respete hpta")
+            return False
     
 
         
