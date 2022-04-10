@@ -4,8 +4,8 @@ from collections import deque
 class Inicial:
 
     def __init__(self, cartas):
-        visibles = deque(cartas[-1])
-        invisibles = deque(cartas[:-1])
+        self.visibles = deque(cartas[-1])
+        self.invisibles = deque(cartas[:-1])
 
     def agarrar(self, cantidad):
         conjunto_en_mano = deque()
