@@ -3,8 +3,8 @@ def pasar_cartas(from_, to, cantidad):
         o False depende de si se termino o no el movimiento
 
         args:
-            to: es la baraja hacia la que se dirije el movimiento
-            from_: corresponde a la baraja desde donde se hace el movimiento"""
+            to (objeto de tipo inicial): es la baraja hacia la que se dirije el movimiento
+            from_ (objeto de tipo inicial): corresponde a la baraja desde donde se hace el movimiento"""
 
     # corresponde al caso en el que existen cartas visibles en la bajara a la que se direge
     if len(to.visibles) != 0 and cantidad <= len(from_.visibles):
