@@ -10,6 +10,7 @@ class Juego:
     #cartas2 = [(j,i) for i in ["A","J","Q","K"] for j in ["P","C","T","D"]]
 
     def __init__(self):
+        self.abierto = True
         self.baraja=deque(Juego.cartas1.copy())
         random.shuffle(self.baraja) # Baraja de cartas del juego desordenadas
         self.iniciales=list()
