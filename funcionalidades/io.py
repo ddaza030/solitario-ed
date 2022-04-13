@@ -3,22 +3,22 @@ def printear():
     pass
 
 
-#Funcion para movimientos
+# Funcion para movimientos
 def movimientos():
-    movim = int(input("¿Qué movimiento deseas realizar?Ingresa solo el número:\n"+
-                    "1. Mover de columna A a B n (cantidad de cartas a mover)\n"+
-                    "2. Destapar cola de arraste\n"+
-                    "3. Reiniciar cola de arraste\n"+
-                    "4. Mover de cola de arraste a torre final X\n"+
-                    "5. Mover de cola de arraste a columna Y\n"+
-                    "6. Mover de columna Y a torre final X\n"+
-                    "7. Mover de torre final X a columna Y\n"))
+    movim = int(input("¿Qué movimiento deseas realizar?Ingresa solo el número:\n" +
+                      "1. Mover de columna A a B n (cantidad de cartas a mover)\n" +
+                      "2. Destapar cola de arraste\n" +
+                      "3. Reiniciar cola de arraste\n" +
+                      "4. Mover de cola de arraste a torre final X\n" +
+                      "5. Mover de cola de arraste a columna Y\n" +
+                      "6. Mover de columna Y a torre final X\n" +
+                      "7. Mover de torre final X a columna Y\n"))
     if movim == 1:
-        cartas = tuple(input("Por favor ingresa los datos así: A B n\n"+
-                            "A:Corresponde a la columna origen\n"+
-                            "B:Corresponde a la columna destino\n"+
-                            "n:Corresponde a cantidad de cartas que se desplazarán\n").split())
-        
+        cartas = tuple(input("Por favor ingresa los datos así: A B n\n" +
+                             "A:Corresponde a la columna origen\n" +
+                             "B:Corresponde a la columna destino\n" +
+                             "n:Corresponde a cantidad de cartas que se desplazarán\n").split())
+
     elif movim == 2:
         destapar()
         printear()
@@ -40,7 +40,7 @@ def movimientos():
     elif movim == 6:
         pass
 
-    elif movim == 7:            
+    elif movim == 7:
         pass
 
 
