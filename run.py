@@ -7,6 +7,6 @@ from funcionalidades import io
 if __name__ == "__main__":
     juego = Juego()
     while juego.abierto:
-        io.printear()
-        io.movimientos()
+        io.printear(juego)
+        io.movimientos(juego)
 
