@@ -32,11 +32,11 @@ def movimientos(juego):
             movimientos(juego)
 
     elif movim == 2:
-        destapar()
+        juego.destapar()
         printear()
 
     elif movim == 3:
-        reiniciar_cola()
+        juego.reiniciar_cola()
         printear()
 
     elif movim == 4:
