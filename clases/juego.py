@@ -26,6 +26,7 @@ class Juego:
             f=Final()
             self.finales.append(f)
         
+        referencia_baraja = self.baraja[0]
 
 """
 juego=Juego()
