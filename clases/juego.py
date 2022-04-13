@@ -30,6 +30,7 @@ class Juego:
         self.referencia_baraja = self.baraja[0]
         self.suelta = self.baraja.popleft()
 
+    # TODO (DAZA): VERIFICAR SI AÚN HAY ELEMENTOS EN BARAJA
     def destapar(self):
         self.baraja.append(self.suelta)
         self.suelta = self.baraja.popleft()
@@ -37,6 +38,11 @@ class Juego:
     def reiniciar_cola(self):
         while self.suelta != self.referencia_baraja:
             self.destapar()
+
+    def actualizar(self):
+        if self.suelta == self.referencia_baraja:
+            self.suelta = self.baraja.popleft()
+
 
 """
 juego=Juego()
