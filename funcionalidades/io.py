@@ -1,10 +1,73 @@
 # Funcion pa printear
 from clases.incial import Inicial
+from clases.final import Final
 from funcionalidades import funcion
+from clases.juego import Juego
+
+#Funcion para cambiar de numeros a las letras correspondientes
+def simbolos(numero):
+    if numero==1:
+        return "A"
+    elif numero==11:
+        return "J"
+    elif numero==12:
+        return "Q"
+    elif numero==13:
+        return "K"
+    return numero
 
 
-def printear():
-    pass
+def printear(Juego):
+    """se debe printear así
+
+    (torres)                   (ultima carta del a baraja)
+AP	AC -- --               2C
+
+7T	 --   --   --   --   --    --       (columnas iniciales)
+     JP   --   --   --   --    --
+          6D   --   --   --    --
+		       QC   --   --    --
+			        9T   --    --
+				         8D    --
+					           10D
+
+    """
+    #Printeo de las Torres finales
+    for i in range(4):
+        if len(Juego.finales[i].cartas)==0:
+            print("{:6}".format('--'),end="")
+        else:
+            print("{:6}".format(str(simbolos(Juego.finales[i][-1][0]))+Juego.finales[i][-1][1]),end="")
+    
+    #Printeo de la Baraja, se printea la cartica que está suelta, o destapda
+    if len(Juego.baraja)!=0:
+        print("{:12}".format(' '),end="")
+        print("{:6}".format(str(simbolos(Juego.suelta[0]))+Juego.suelta[-1]))
+
+    else:
+        print("{:12}".format(' '),end="")
+        print("{:6}".format('--'))
+    
+    print()
+
+    #Lista de cada columna con sus elementos en modo string
+    ini=[]
+    for element in Juego.iniciales:
+        column=["--"]*len(element.invisibles)
+        column+=[str(simbolos(carta[0]))+carta[1] for carta in element.visibles]
+        ini.append(column)
+    
+
+    longestcol=len(max(ini,key=len))      #sacando la columna mas larga
+
+    #Printeo de esta lista
+    for i in range(len(ini)):
+        for j in range(longestcol):
+            try:
+                print("{:6}".format(ini[j][i]),end="")
+            except:
+                print("{:6}".format(' '),end="")
+        print()
 
 
 # Funcion para movimientos
@@ -23,30 +86,31 @@ def movimientos(juego):
                                        "B:Corresponde a la columna destino\n" +
                                        "n:Corresponde a cantidad de cartas que se desplazarán\n").split()))
 
-        verdad_absoluta = funcion.pasar_cartas(juego.inciales[a - 1], juego.iniciales[b - 1], n)
+        verdad_absoluta = funcion.pasar_columnas(juego.iniciales[a - 1], juego.iniciales[b - 1], n)
         if verdad_absoluta:
-            printear()
+            printear(juego)
+            pass
         else:
             print("Movimiento inválido, intente de nuevo")
-            printear()
-            movimientos(juego)
+            #printear()
+            #movimientos(juego)
 
     elif movim == 2:
         juego.destapar()
-        printear()
+        #printear()
 
     elif movim == 3:
         juego.reiniciar_cola()
-        printear()
+        #printear()
 
     elif movim == 4:
         carta = sacar_cola()
-        final.poner(carta)
-        printear()
+        Final.poner(carta)
+        #printear()
         pass
     elif movim == 5:
         carta = sacar_cola()
-        inicial.anadir(carta)
+        Inicial.anadir(carta)
         pass
 
     elif movim == 6:

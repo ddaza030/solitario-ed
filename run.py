@@ -2,6 +2,7 @@ from clases.final import Final
 from clases.incial import Inicial
 from clases.juego import Juego
 from funcionalidades import io
+from funcionalidades import funcion
 
 
 if __name__ == "__main__":
