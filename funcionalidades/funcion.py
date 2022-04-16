@@ -37,7 +37,7 @@ def pasar_columnas(from_, to, cantidad):
                 (carta_down[1] == 'D' or carta_down[1] == 'C'):
             colores = True
 
-        if carta_down[0] < carta_up[0] and carta_down[0] > carta_up[0]-2 and colores:
+        if carta_up[0]-1 == carta_down[0] and colores:
             to.anadir(from_.agarrar(cantidad))
             return True
 
@@ -73,8 +73,9 @@ def pasar_arrastre_columna(carta, to):
                 (carta[1] == 'D' or carta[1] == 'C'):
             colores = True
 
-        if carta[0] < carta_up[0] and carta[0] > carta_up[0]-2 and colores:
+        if carta_up[0]-1 == carta[0] and colores:
             to.anadir([deque(carta)])
+
             return True
 
         return False

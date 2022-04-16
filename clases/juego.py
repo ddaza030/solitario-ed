@@ -12,6 +12,7 @@ class Juego:
     def __init__(self):
         self.abierto = True
         self.baraja=deque(Juego.cartas1.copy())
+        self.sueltas = deque()
         random.shuffle(self.baraja) # Baraja de cartas del juego desordenadas
         self.iniciales=list()
 
@@ -28,20 +29,22 @@ class Juego:
             self.finales.append(f)
 
         self.referencia_baraja = self.baraja[0]
-        self.suelta = self.baraja.popleft()
 
-    # TODO (DAZA): VERIFICAR SI AÚN HAY ELEMENTOS EN BARAJA
     def destapar(self):
-        self.baraja.append(self.suelta)
-        self.suelta = self.baraja.popleft()
+        if len(self.baraja) != 0:
+            self.sueltas.append(self.baraja.popleft())
+            return True
+        else:
+            return False
 
     def reiniciar_cola(self):
-        while self.suelta != self.referencia_baraja:
-            self.destapar()
-
-    def actualizar(self):
-        if self.suelta == self.referencia_baraja:
-            self.suelta = self.baraja.popleft()
+        if len(self.baraja) != 0:
+            return False
+        elif len(self.sueltas) == 0:
+            return False
+        else:
+            while len(self.sueltas) != 0:
+                self.baraja.append(self.sueltas.popleft())
 
 
 """
