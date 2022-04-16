@@ -37,7 +37,7 @@ AP	AC -- --               2C
         if len(Juego.finales[i].cartas)==0:
             print("{:6}".format('--'),end="")
         else:
-            print("{:6}".format(str(simbolos(Juego.finales[i][-1][0]))+Juego.finales[i][-1][1]),end="")
+            print("{:6}".format(str(simbolos(Juego.finales[i].cartas[-1][0]))+Juego.finales[i].cartas[-1][1]),end="")
     
     #Printeo de la Baraja, se printea la cartica que está suelta, o destapda
     if len(Juego.baraja)!=0:
@@ -109,10 +109,13 @@ def movimientos(juego):
         #printear()
 
     elif movim == 4:
-        carta = sacar_cola()
-        Final.poner(carta)
-        #printear()
-        pass
+        col=int(input("Ingrese el numero de la torre al que quiere llevar la carta:\n"))
+        carta = juego.suelta
+        if juego.finales[col-1].poner(carta):
+            pass
+        else:
+            print("Movimiento inválido, intente de nuevo")
+
     elif movim == 5:
         a = int(input("Por favor ingresa los datos así: A\n" +
                                        "A:Corresponde a la columna destino\n"))
