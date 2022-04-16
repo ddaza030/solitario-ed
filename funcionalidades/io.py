@@ -4,18 +4,6 @@ from clases.final import Final
 from funcionalidades import funcion
 from clases.juego import Juego
 
-#Funcion para cambiar de numeros a las letras correspondientes
-def simbolos(numero):
-    if numero==1:
-        return "A"
-    elif numero==11:
-        return "J"
-    elif numero==12:
-        return "Q"
-    elif numero==13:
-        return "K"
-    return numero
-
 
 def printear(Juego):
     """se debe printear así
@@ -37,12 +25,12 @@ AP	AC -- --               2C
         if len(Juego.finales[i].cartas)==0:
             print("{:6}".format('--'),end="")
         else:
-            print("{:6}".format(str(simbolos(Juego.finales[i].cartas[-1][0]))+Juego.finales[i].cartas[-1][1]),end="")
+            print("{:6}".format(str(funcion.simbolos(Juego.finales[i].cartas[-1][0]))+Juego.finales[i].cartas[-1][1]),end="")
     
     #Printeo de la Baraja, se printea la cartica que está suelta, o destapda
     if len(Juego.baraja)!=0:
         print("{:12}".format(' '),end="")
-        print("{:6}".format(str(simbolos(Juego.suelta[0]))+Juego.suelta[-1]))
+        print("{:6}".format(str(funcion.simbolos(Juego.suelta[0]))+Juego.suelta[-1]))
 
     else:
         print("{:12}".format(' '),end="")
@@ -54,7 +42,7 @@ AP	AC -- --               2C
     ini=[]
     for element in Juego.iniciales:
         column=["--"]*len(element.invisibles)
-        column+=[str(simbolos(carta[0]))+carta[1] for carta in element.visibles]
+        column+=[str(funcion.simbolos(carta[0]))+carta[1] for carta in element.visibles]
         ini.append(column)
     
 

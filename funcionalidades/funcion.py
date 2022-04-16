@@ -1,6 +1,19 @@
 from collections import deque
 
 
+def simbolos(numero):
+    """Funcion para cambiar de numeros a las letras correspondientes"""
+    if numero==1:
+        return "A"
+    elif numero==11:
+        return "J"
+    elif numero==12:
+        return "Q"
+    elif numero==13:
+        return "K"
+    return numero
+
+
 def pasar_columnas(from_, to, cantidad):
     """Metodo para pasar cartas de un objeto Inicial al otro, devuelve True
         o False depende de si se termino o no el movimiento
