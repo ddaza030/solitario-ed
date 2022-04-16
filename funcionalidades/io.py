@@ -5,7 +5,7 @@ from funcionalidades import funcion
 from clases.juego import Juego
 
 
-def printear(Juego):
+def printear(juego):
     """se debe printear así
 
     (torres)                   (ultima carta del a baraja)
@@ -22,29 +22,32 @@ AP	AC -- --               2C
     """
     #Printeo de las Torres finales
     for i in range(4):
-        if len(Juego.finales[i].cartas)==0:
+        if len(juego.finales[i].cartas)==0:
             print("{:6}".format('--'),end="")
         else:
-            print("{:6}".format(str(funcion.simbolos(Juego.finales[i].cartas[-1][0]))+Juego.finales[i].cartas[-1][1]),end="")
-    
+            print("{:6}".format(str(funcion.simbolos(juego.finales[i].cartas[-1][0])) + juego.finales[i].cartas[-1][1]), end="")
+
     #Printeo de la Baraja, se printea la cartica que está suelta, o destapda
-    if len(Juego.baraja)!=0:
+    if len(juego.baraja)!=0:
         print("{:12}".format(' '),end="")
-        print("{:6}".format(str(funcion.simbolos(Juego.suelta[0]))+Juego.suelta[-1]))
+        try:
+            print("{:6}".format(str(funcion.simbolos(juego.sueltas[-1][0])) + juego.sueltas[-1][1]))
+        except IndexError:
+            print("{:6}".format('--'))
 
     else:
         print("{:12}".format(' '),end="")
         print("{:6}".format('--'))
-    
+
     print()
 
     #Lista de cada columna con sus elementos en modo string
     ini=[]
-    for element in Juego.iniciales:
+    for element in juego.iniciales:
         column=["--"]*len(element.invisibles)
         column+=[str(funcion.simbolos(carta[0]))+carta[1] for carta in element.visibles]
         ini.append(column)
-    
+
 
     longestcol=len(max(ini,key=len))      #sacando la columna mas larga
 
@@ -73,51 +76,49 @@ def movimientos(juego):
         juego.abierto=False
 
     elif movim == 1:
+
         a, b, n = tuple(map(int, input("Por favor ingresa los datos así: A B n\n" +
                                        "A:Corresponde a la columna origen\n" +
                                        "B:Corresponde a la columna destino\n" +
                                        "n:Corresponde a cantidad de cartas que se desplazarán\n").split()))
 
         verdad_absoluta = funcion.pasar_columnas(juego.iniciales[a - 1], juego.iniciales[b - 1], n)
-        if verdad_absoluta:
-            #printear(juego)
-            pass
-        else:
+        if not verdad_absoluta:
             print("Movimiento inválido, intente de nuevo")
             print()
-            #printear()
-            #movimientos(juego)
 
     elif movim == 2:
         juego.destapar()
-        #printear()
 
     elif movim == 3:
         juego.reiniciar_cola()
-        #printear()
 
     elif movim == 4:
         col=int(input("Ingrese el numero de la torre al que quiere llevar la carta:\n"))
-        carta = juego.suelta
-        if juego.finales[col-1].poner(carta):
-            pass
-        else:
-            print("Movimiento inválido, intente de nuevo")
+        try:
+            carta = juego.sueltas[-1]
+            if juego.finales[col-1].poner(carta):
+                pass
+            else:
+                print("Movimiento inválido, intente de nuevo")
+        except IndexError:
+            return print("Movimiento inválido, intente de nuevo")
 
     elif movim == 5:
         a = int(input("Por favor ingresa los datos así: A\n" +
                                        "A:Corresponde a la columna destino\n"))
 
-        verdad_absoluta = funcion.pasar_arrastre_columna(juego.suelta,juego.iniciales[a - 1])
-        if verdad_absoluta:
-            #printear(juego)
-            juego.suelta=juego.baraja.popleft()
-            pass
-        else:
+        try:
+            verdad_absoluta = funcion.pasar_arrastre_columna(juego.sueltas[-1],juego.iniciales[a - 1])
+            if verdad_absoluta:
+                juego.sueltas.pop()
+                juego.destapar()
+            else:
+                print("Movimiento inválido, intente de nuevo")
+                print()
+        except IndexError:
             print("Movimiento inválido, intente de nuevo")
             print()
-            #printear()
-            #movimientos(juego)
 
     elif movim == 6:
         pass
