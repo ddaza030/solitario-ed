@@ -65,7 +65,8 @@ AP	AC -- --             2C    --   (baraja)
 
 # Funcion para movimientos
 def movimientos(juego):
-    movim = int(input("¿Qué movimiento deseas realizar?Ingresa solo el número:\n" +
+
+    try: movim = int(input("¿Qué movimiento deseas realizar?Ingresa solo el número:\n" +
                         "0. Cerrar el Juego\n" +
                       "1. Mover de columna A a B n (cantidad de cartas a mover)\n" +
                       "2. Destapar cola de arraste\n" +
@@ -74,15 +75,21 @@ def movimientos(juego):
                       "5. Mover de cola de arraste a columna Y\n" +
                       "6. Mover de columna Y a torre final X\n" +
                       "7. Mover de torre final X a columna Y\n"))
+    except ValueError:
+        return -1
+
     if movim == 0:
         juego.abierto=False
 
     elif movim == 1:
 
-        a, b, n = tuple(map(int, input("Por favor ingresa los datos así: A B n\n" +
+        try: a, b, n = tuple(map(int, input("Por favor ingresa los datos así: A B n\n" +
                                        "A:Corresponde a la columna origen\n" +
                                        "B:Corresponde a la columna destino\n" +
                                        "n:Corresponde a cantidad de cartas que se desplazarán\n").split()))
+        except ValueError:
+            return -1
+        
         try:
             validez = funcion.pasar_columnas(juego.iniciales[a - 1], juego.iniciales[b - 1], n)
             if not validez:
@@ -105,7 +112,11 @@ def movimientos(juego):
             print()
 
     elif movim == 4:
-        col=int(input("Ingrese el numero de la torre al que quiere llevar la carta:\n"))
+        try: col=int(input("Ingrese el numero de la torre al que quiere llevar la carta:\n"))
+
+        except ValueError:
+            return -1
+          
         try:
             carta = juego.sueltas[-1]
             if juego.finales[col-1].poner(carta):
@@ -116,8 +127,11 @@ def movimientos(juego):
             return print("Movimiento inválido, intente de nuevo")
 
     elif movim == 5:
-        a = int(input("Por favor ingresa los datos así: A\n" +
+        try: a = int(input("Por favor ingresa los datos así: A\n" +
                                        "A:Corresponde a la columna destino\n"))
+
+        except ValueError:
+            return -1
 
         try:
             validez = funcion.pasar_arrastre_columna(juego.sueltas[-1],juego.iniciales[a - 1])
@@ -132,9 +146,12 @@ def movimientos(juego):
             print()
 
     elif movim == 6:
-        a, b = tuple(map(int, input("Por favor ingresa los datos así: A B n\n" +
+        try: a, b = tuple(map(int, input("Por favor ingresa los datos así: A B n\n" +
                                        "A:Corresponde a la columna origen\n" +
                                        "B:Corresponde a la torre de destino\n").split()))
+
+        except ValueError:
+            return -1
         
         cartas=juego.iniciales[a-1].agarrar(1) #Agarra cantidad de cartas n de la columna a
         
@@ -150,9 +167,12 @@ def movimientos(juego):
 
 
     elif movim == 7:
-        a, b = tuple(map(int, input("Por favor ingresa los datos así: A B n\n" +
+        try: a, b = tuple(map(int, input("Por favor ingresa los datos así: A B\n" +
                                     "A:Corresponde a la torre origen\n"+
                                     "B:Corresponde a la columna de destino\n").split()))
+        
+        except ValueError:
+            return -1
 
         try:
             validez = funcion.pasar_arrastre_columna(juego.finales[a-1].cartas[-1], juego.iniciales[b-1])
