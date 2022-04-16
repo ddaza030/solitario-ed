@@ -83,9 +83,12 @@ def movimientos(juego):
                                        "A:Corresponde a la columna origen\n" +
                                        "B:Corresponde a la columna destino\n" +
                                        "n:Corresponde a cantidad de cartas que se desplazarán\n").split()))
-
-        validez = funcion.pasar_columnas(juego.iniciales[a - 1], juego.iniciales[b - 1], n)
-        if not validez:
+        try:
+            validez = funcion.pasar_columnas(juego.iniciales[a - 1], juego.iniciales[b - 1], n)
+            if not validez:
+                print("Movimiento inválido, intente de nuevo")
+                print()
+        except IndexError:
             print("Movimiento inválido, intente de nuevo")
             print()
 
@@ -106,7 +109,7 @@ def movimientos(juego):
         try:
             carta = juego.sueltas[-1]
             if juego.finales[col-1].poner(carta):
-                pass
+                juego.sueltas.pop()
             else:
                 print("Movimiento inválido, intente de nuevo")
         except IndexError:
@@ -140,7 +143,22 @@ def movimientos(juego):
 
 
     elif movim == 7:
-        pass
+        a, b = tuple(map(int, input("Por favor ingresa los datos así: A B n\n" +
+                                    "A:Corresponde a la torre origen\n"+
+                                    "B:Corresponde a la columna de destino\n").split()))
+
+        try:
+            validez = funcion.pasar_arrastre_columna(juego.finales[a-1].cartas[-1], juego.iniciales[b-1])
+            if validez:
+                juego.finales[a-1].cartas.pop()
+            else:
+                print("Movimiento inválido, intente de nuevo")
+                print()
+        except IndexError:
+            print("Movimiento inválido, intente de nuevo")
+            print()
+
+
 
 
 '''
