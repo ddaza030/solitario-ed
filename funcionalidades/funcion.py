@@ -63,7 +63,7 @@ def pasar_arrastre_columna(carta, to):
             carta (tuple): corresponde a la carta suelta en Juego"""
 
     # corresponde al caso en el que existen cartas visibles en la bajara a la que se direge
-    if carta is not None:
+    if len(to.visibles) != 0:
 
         carta_up = to.visibles[-1]
         colores = False
@@ -84,11 +84,10 @@ def pasar_arrastre_columna(carta, to):
         return False
 
     # corresponde al caso en el que no hay cartas en to
-    elif len(to.visibles) == 0 and\
-            carta is not None:
+    elif len(to.visibles) == 0:
 
         if carta[0] == 13:
-            to.anadir(deque(carta))
+            to.anadir([deque(carta)])
             return True
 
     return False

@@ -132,28 +132,20 @@ def movimientos(juego):
             print()
 
     elif movim == 6:
-        a, b, n = tuple(map(int, input("Por favor ingresa los datos así: A B n\n" +
+        a, b = tuple(map(int, input("Por favor ingresa los datos así: A B n\n" +
                                        "A:Corresponde a la columna origen\n" +
-                                       "B:Corresponde a la torre de destino\n" +
-                                       "n:Corresponde a cantidad de cartas que se desplazarán\n").split()))
+                                       "B:Corresponde a la torre de destino\n").split()))
         
-        cartas=juego.iniciales[a-1].agarrar(n) #Agarra cantidad de cartas n de la columna a
-        copia=cartas.copy()
-        k=0
+        cartas=juego.iniciales[a-1].agarrar(1) #Agarra cantidad de cartas n de la columna a
         
-        for i in range(n):
-            verdad_absoluta=juego.finales[b-1].poner(copia.popleft()) #pone dicha cantidad de cartas en la torre de destino
-            if verdad_absoluta: #Verificar que se haya hecho
-                k+=1
-                continue
-            else:
-                break
+
+        verdad_absoluta=juego.finales[b-1].poner(cartas.popleft()) #pone dicha cantidad de cartas en la torre de destino
+
         if not verdad_absoluta:
             print("Movimiento inválido, intente de nuevo")
             print()
             juego.iniciales[a-1].anadir(cartas)
-            for i in range(k):
-                juego.finales[b-1].cartas.pop()
+            juego.finales[b-1].cartas.pop()
 
 
 
