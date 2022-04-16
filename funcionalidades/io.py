@@ -154,6 +154,7 @@ def movimientos(juego):
             return -1
         
         cartas=juego.iniciales[a-1].agarrar(1) #Agarra cantidad de cartas n de la columna a
+        copia=cartas.copy()
         
 
         verdad_absoluta=juego.finales[b-1].poner(cartas.popleft()) #pone dicha cantidad de cartas en la torre de destino
@@ -161,8 +162,8 @@ def movimientos(juego):
         if not verdad_absoluta:
             print("Movimiento inválido, intente de nuevo")
             print()
-            juego.iniciales[a-1].anadir(cartas)
-            juego.finales[b-1].cartas.pop()
+            juego.iniciales[a-1].anadir(copia.popleft())
+            #juego.finales[b-1].cartas.pop()
 
 
 
