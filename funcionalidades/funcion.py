@@ -30,11 +30,11 @@ def pasar_columnas(from_, to, cantidad):
         colores = False
 
         # se revisa que el cambio por parte de colores se pueda hacer
-        if carta_up[1] == 'D' or carta_up[1] == 'C' and \
-                carta_down[1] == 'T' or carta_down[1] == 'P':
+        if (carta_up[1] == 'D' or carta_up[1]) == 'C' and \
+                (carta_down[1] == 'T' or carta_down[1] == 'P'):
             colores = True
-        elif carta_up[1] == 'T' or carta_up[1] == 'P' and \
-                carta_down[1] == 'D' or carta_down[1] == 'C':
+        elif (carta_up[1] == 'T' or carta_up[1]) == 'P' and \
+                (carta_down[1] == 'D' or carta_down[1] == 'C'):
             colores = True
 
         if carta_down[0] < carta_up[0] and carta_down[0] > carta_up[0]-2 and colores:
@@ -66,11 +66,11 @@ def pasar_arrastre_columna(carta, to):
         colores = False
 
         # se revisa que el cambio por parte de colores se pueda hacer
-        if carta_up[1] == 'D' or carta_up[1] == 'C' and \
-                carta[1] == 'T' or carta[1] == 'P':
+        if (carta_up[1] == 'D' or carta_up[1] == 'C') and \
+                (carta[1] == 'T' or carta[1] == 'P'):
             colores = True
-        elif carta_up[1] == 'T' or carta_up[1] == 'P' and \
-                carta[1] == 'D' or carta[1] == 'C':
+        elif (carta_up[1] == 'T' or carta_up[1] == 'P') and \
+                (carta[1] == 'D' or carta[1] == 'C'):
             colores = True
 
         if carta[0] < carta_up[0] and carta[0] > carta_up[0]-2 and colores:
