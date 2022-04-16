@@ -162,7 +162,7 @@ def movimientos(juego):
         if not verdad_absoluta:
             print("Movimiento inválido, intente de nuevo")
             print()
-            juego.iniciales[a-1].anadir(copia.popleft())
+            juego.iniciales[a-1].anadir(copia)
             #juego.finales[b-1].cartas.pop()
 
 
