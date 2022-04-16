@@ -73,6 +73,7 @@ AP	AC -- --               2C
 # Funcion para movimientos
 def movimientos(juego):
     movim = int(input("¿Qué movimiento deseas realizar?Ingresa solo el número:\n" +
+                        "0. Cerrar el Juego\n" +
                       "1. Mover de columna A a B n (cantidad de cartas a mover)\n" +
                       "2. Destapar cola de arraste\n" +
                       "3. Reiniciar cola de arraste\n" +
@@ -80,7 +81,10 @@ def movimientos(juego):
                       "5. Mover de cola de arraste a columna Y\n" +
                       "6. Mover de columna Y a torre final X\n" +
                       "7. Mover de torre final X a columna Y\n"))
-    if movim == 1:
+    if movim == 0:
+        juego.abierto=False
+
+    elif movim == 1:
         a, b, n = tuple(map(int, input("Por favor ingresa los datos así: A B n\n" +
                                        "A:Corresponde a la columna origen\n" +
                                        "B:Corresponde a la columna destino\n" +
@@ -88,7 +92,7 @@ def movimientos(juego):
 
         verdad_absoluta = funcion.pasar_columnas(juego.iniciales[a - 1], juego.iniciales[b - 1], n)
         if verdad_absoluta:
-            printear(juego)
+            #printear(juego)
             pass
         else:
             print("Movimiento inválido, intente de nuevo")
@@ -109,9 +113,18 @@ def movimientos(juego):
         #printear()
         pass
     elif movim == 5:
-        carta = sacar_cola()
-        Inicial.anadir(carta)
-        pass
+        a = int(input("Por favor ingresa los datos así: A\n" +
+                                       "A:Corresponde a la columna destino\n"))
+
+        verdad_absoluta = funcion.pasar_arrastre_columna(juego.suelta,juego.iniciales[a - 1])
+        if verdad_absoluta:
+            #printear(juego)
+            juego.suelta=juego.baraja.popleft()
+            pass
+        else:
+            print("Movimiento inválido, intente de nuevo")
+            #printear()
+            #movimientos(juego)
 
     elif movim == 6:
         pass
