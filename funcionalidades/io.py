@@ -138,7 +138,7 @@ def movimientos(juego):
         copia=cartas.copy()
         k=0
         
-        for i in range(n):
+        for i in range(n): #Solo agarrar visibles o error
             verdad_absoluta=juego.finales[b-1].poner(copia.popleft()) #pone dicha cantidad de cartas en la torre de destino
             if verdad_absoluta: #Verificar que se haya hecho
                 k+=1
