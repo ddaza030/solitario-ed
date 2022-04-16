@@ -135,8 +135,23 @@ def movimientos(juego):
                                        "n:Corresponde a cantidad de cartas que se desplazarán\n").split()))
         
         cartas=juego.iniciales[a-1].agarrar(n) #Agarra cantidad de cartas n de la columna a
+        copia=cartas.copy()
+        k=0
+        
         for i in range(n):
-            juego.finales[b-1].poner(cartas.popleft()) #pone dicha cantidad de cartas en la torre de destino
+            verdad_absoluta=juego.finales[b-1].poner(copia.popleft()) #pone dicha cantidad de cartas en la torre de destino
+            if verdad_absoluta: #Verificar que se haya hecho
+                k+=1
+                continue
+            else:
+                break
+        if not verdad_absoluta:
+            print("Movimiento inválido, intente de nuevo")
+            print()
+            juego.iniciales[a-1].anadir(cartas)
+            for i in range(k):
+                juego.finales[b-1].cartas.pop()
+
 
 
     elif movim == 7:
