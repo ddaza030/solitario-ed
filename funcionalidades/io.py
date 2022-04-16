@@ -8,8 +8,8 @@ from clases.juego import Juego
 def printear(juego):
     """se debe printear así
 
-    (torres)                   (ultima carta del a baraja)
-AP	AC -- --               2C
+    (torres)  (ultima carta de la baraja)
+AP	AC -- --             2C    --   (baraja)
 
 7T	 --   --   --   --   --    --       (columnas iniciales)
      JP   --   --   --   --    --
