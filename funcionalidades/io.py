@@ -28,15 +28,17 @@ AP	AC -- --               2C
             print("{:6}".format(str(funcion.simbolos(juego.finales[i].cartas[-1][0])) + juego.finales[i].cartas[-1][1]), end="")
 
     #Printeo de la Baraja, se printea la cartica que está suelta, o destapda
-    if len(juego.baraja)!=0:
-        print("{:12}".format(' '),end="")
-        try:
-            print("{:6}".format(str(funcion.simbolos(juego.sueltas[-1][0])) + juego.sueltas[-1][1]))
-        except IndexError:
-            print("{:6}".format('--'))
+
+    print("{:6}".format(' '),end="")
+    try:
+        print("{:6}".format(str(funcion.simbolos(juego.sueltas[-1][0])) + juego.sueltas[-1][1]), end='')
+    except IndexError:
+        print("{:6}".format('--'), end='')
+
+    if len(juego.baraja) == 0:
+        print("{:6}".format(' '))
 
     else:
-        print("{:12}".format(' '),end="")
         print("{:6}".format('--'))
 
     print()
