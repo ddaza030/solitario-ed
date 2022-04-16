@@ -30,10 +30,10 @@ def pasar_columnas(from_, to, cantidad):
         colores = False
 
         # se revisa que el cambio por parte de colores se pueda hacer
-        if (carta_up[1] == 'D' or carta_up[1]) == 'C' and \
+        if (carta_up[1] == 'D' or carta_up[1] == 'C') and \
                 (carta_down[1] == 'T' or carta_down[1] == 'P'):
             colores = True
-        elif (carta_up[1] == 'T' or carta_up[1]) == 'P' and \
+        elif (carta_up[1] == 'T' or carta_up[1] == 'P') and \
                 (carta_down[1] == 'D' or carta_down[1] == 'C'):
             colores = True
 

@@ -49,10 +49,10 @@ AP	AC -- --               2C
     longestcol=len(max(ini,key=len))      #sacando la columna mas larga
 
     #Printeo de esta lista
-    for i in range(len(ini)):
-        for j in range(longestcol):
+    for i in range(longestcol):
+        for j in range(len(ini)):
             try:
-                print("{:6}".format(ini[j][i]),end="")
+                print("{:6}".format(ini[j][i]),end="")    #j=fila, i=columna  
             except:
                 print("{:6}".format(' '),end="")
         print()
