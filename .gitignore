@@ -1,8 +1,3 @@
-
-.idea/inspectionProfiles/profiles_settings.xml
-.idea/misc.xml
-.idea/modules.xml
-.idea/solitario.iml
-.idea/vcs.xml
+.idea/
 funcionalidades/__pycache__/
 clases/__pycache__/
