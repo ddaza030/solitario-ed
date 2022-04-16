@@ -4,3 +4,5 @@
 .idea/modules.xml
 .idea/solitario.iml
 .idea/vcs.xml
+funcionalidades/__pycache__/
+clases/__pycache__/

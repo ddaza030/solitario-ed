@@ -90,10 +90,16 @@ def movimientos(juego):
             print()
 
     elif movim == 2:
-        juego.destapar()
+        validez = juego.destapar()
+        if not validez:
+            print("Movimiento inválido, intente de nuevo")
+            print()
 
     elif movim == 3:
-        juego.reiniciar_cola()
+        validez = juego.reiniciar_cola()
+        if not validez:
+            print("Movimiento inválido, intente de nuevo")
+            print()
 
     elif movim == 4:
         col=int(input("Ingrese el numero de la torre al que quiere llevar la carta:\n"))
@@ -123,7 +129,15 @@ def movimientos(juego):
             print()
 
     elif movim == 6:
-        pass
+        a, b, n = tuple(map(int, input("Por favor ingresa los datos así: A B n\n" +
+                                       "A:Corresponde a la columna origen\n" +
+                                       "B:Corresponde a la torre de destino\n" +
+                                       "n:Corresponde a cantidad de cartas que se desplazarán\n").split()))
+        
+        cartas=juego.iniciales[a-1].agarrar(n) #Agarra cantidad de cartas n de la columna a
+        for i in range(n):
+            juego.finales[b-1].poner(cartas.popleft()) #pone dicha cantidad de cartas en la torre de destino
+
 
     elif movim == 7:
         pass
