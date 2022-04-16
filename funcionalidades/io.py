@@ -96,6 +96,7 @@ def movimientos(juego):
             pass
         else:
             print("Movimiento inválido, intente de nuevo")
+            print()
             #printear()
             #movimientos(juego)
 
@@ -123,6 +124,7 @@ def movimientos(juego):
             pass
         else:
             print("Movimiento inválido, intente de nuevo")
+            print()
             #printear()
             #movimientos(juego)
 
