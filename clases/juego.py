@@ -45,6 +45,7 @@ class Juego:
         else:
             while len(self.sueltas) != 0:
                 self.baraja.append(self.sueltas.popleft())
+            return True
 
 
 """
