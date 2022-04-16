@@ -45,8 +45,11 @@ def pasar_columnas(from_, to, cantidad):
 
     # corresponde al caso en el que no hay cartas en to
     elif len(to.visibles) == 0 and cantidad <= len(from_.visibles):
-        to.anadir(from_.agarrar(cantidad))
-        return True
+        carta_down = from_.visibles[-cantidad]
+
+        if carta_down[0] == 13:
+            to.anadir(from_.agarrar(cantidad))
+            return True
 
     return False
 
@@ -84,7 +87,8 @@ def pasar_arrastre_columna(carta, to):
     elif len(to.visibles) == 0 and\
             carta is not None:
 
-        to.anadir(deque(carta))
-        return True
+        if carta[0] == 13:
+            to.anadir(deque(carta))
+            return True
 
     return False

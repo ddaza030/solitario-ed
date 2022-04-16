@@ -84,8 +84,8 @@ def movimientos(juego):
                                        "B:Corresponde a la columna destino\n" +
                                        "n:Corresponde a cantidad de cartas que se desplazarán\n").split()))
 
-        verdad_absoluta = funcion.pasar_columnas(juego.iniciales[a - 1], juego.iniciales[b - 1], n)
-        if not verdad_absoluta:
+        validez = funcion.pasar_columnas(juego.iniciales[a - 1], juego.iniciales[b - 1], n)
+        if not validez:
             print("Movimiento inválido, intente de nuevo")
             print()
 
@@ -117,8 +117,8 @@ def movimientos(juego):
                                        "A:Corresponde a la columna destino\n"))
 
         try:
-            verdad_absoluta = funcion.pasar_arrastre_columna(juego.sueltas[-1],juego.iniciales[a - 1])
-            if verdad_absoluta:
+            validez = funcion.pasar_arrastre_columna(juego.sueltas[-1],juego.iniciales[a - 1])
+            if validez:
                 juego.sueltas.pop()
                 juego.destapar()
             else:

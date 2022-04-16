@@ -1,8 +1,8 @@
 from collections import deque
 
 class Final:
-    def __init__(self, cartas = None,pinta = None):
-        self.cartas=list()
+    def __init__(self, pinta=None):
+        self.cartas=deque()
         self.pinta=pinta
         pass
 
